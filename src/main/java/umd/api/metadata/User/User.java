@@ -19,7 +19,7 @@ import java.util.Date;
 @Document(collection = "users")
 public class User {
     @Id
-    private ObjectId id;
+    private String id;
     @Indexed(name = "user_name_index", unique = true, direction = IndexDirection.ASCENDING)
     @NotNull(message = "The User Name cannot be null")
     private String name;

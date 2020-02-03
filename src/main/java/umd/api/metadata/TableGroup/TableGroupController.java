@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.Optional;
 
 @RestController
@@ -24,12 +25,12 @@ public class TableGroupController {
     }
 
     @GetMapping("/all")
-    public Iterable<TableGroup> findAllTableGroups() {
+    public Collection<TableGroup> findAllTableGroups() {
         return tableGroupService.findAllTableGroups();
     }
 
     @GetMapping("/{tableGroupId}")
-    public ResponseEntity<?> findTableGroupById(@PathVariable ObjectId tableGroupId) {
+    public ResponseEntity<?> findTableGroupById(@PathVariable String tableGroupId) {
         Optional<TableGroup> tableGroup = tableGroupService.findById(tableGroupId);
 
         return new ResponseEntity<>(tableGroup, HttpStatus.OK);

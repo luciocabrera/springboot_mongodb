@@ -21,7 +21,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> findById(ObjectId userId) {
+    public Optional<User> findById(String userId) {
         return userRepository.findById(userId);
     }
 }

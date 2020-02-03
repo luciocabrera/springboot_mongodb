@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import umd.api.metadata.UserRole.UserRole;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Collection;
 import java.util.Date;
 
 @Getter
@@ -20,7 +21,7 @@ import java.util.Date;
 public class TableGroup {
 
     @Id
-    private ObjectId id;
+    private String id;
     @Indexed(name = "table_group_name_index", unique = true, direction = IndexDirection.ASCENDING)
     @NotBlank(message = "The Table Group Name cannot be empty")
     private String name;
@@ -32,5 +33,5 @@ public class TableGroup {
     private Date lastModifiedAt;
     private String lastModifiedBy;
 
-    private Iterable<UserRole> userRole;
+    private Collection<String> userRole_ids;
 }

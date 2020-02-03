@@ -1,17 +1,26 @@
 package umd.api.metadata.Role;
 
-import org.bson.types.ObjectId;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
+@Getter
+@Setter
+@Document(collection = "roles")
 public class Role {
     @Id
-    private ObjectId id;
+    private String id;
     @Indexed(name = "role_name_index", unique = true, direction = IndexDirection.ASCENDING)
     private String name;
+
+    private List<String> rights;
+
 
     private Date createdAt;
     private String createdBy;

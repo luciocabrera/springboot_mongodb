@@ -4,6 +4,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -16,11 +17,11 @@ public class TableGroupService {
         return tableGroupRepository.save(tableGroup);
     }
 
-    public Iterable<TableGroup> findAllTableGroups() {
+    public Collection<TableGroup> findAllTableGroups() {
         return tableGroupRepository.findAll();
     }
 
-    public Optional<TableGroup> findById(ObjectId tableGroupId) {
+    public Optional<TableGroup> findById(String tableGroupId) {
         return tableGroupRepository.findById(tableGroupId);
     }
 }

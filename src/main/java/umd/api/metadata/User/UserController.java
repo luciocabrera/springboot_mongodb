@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.Optional;
 
 @RestController
@@ -29,12 +30,12 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public Iterable<User> findAllUsers() {
+    public Collection<User> findAllUsers() {
         return userService.findAllUsers();
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<?> findUserById(@PathVariable ObjectId userId) {
+    public ResponseEntity<?> findUserById(@PathVariable String userId) {
         Optional<User> user = userService.findById(userId);
 
         return new ResponseEntity<>(user, HttpStatus.OK);

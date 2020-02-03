@@ -3,7 +3,6 @@ package umd.api.metadata.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -20,9 +19,9 @@ import java.util.Date;
 public class Table {
 
     @Id
-    private ObjectId id;
+    private String id;
     @NotNull(message = "The Table Group Id cannot be null")
-    private ObjectId tablegroup_id;
+    private String tablegroup_id;
     @Indexed(name = "table_name_index", unique = true, direction = IndexDirection.ASCENDING)
     @NotBlank(message = "The Table name cannot be empty")
     private String name;
@@ -33,5 +32,5 @@ public class Table {
     private Date lastModifiedAt;
     private String lastModifiedBy;
 
-    private Iterable<UserRole> userRole;
+    private Iterable<UserRole> userRole_id;
 }
