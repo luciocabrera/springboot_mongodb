@@ -15,15 +15,22 @@ import java.util.List;
 @Document(collection = "roles")
 public class Role {
     @Id
-    private String id;
+    private String _id;
     @Indexed(name = "role_name_index", unique = true, direction = IndexDirection.ASCENDING)
     private String name;
 
-    private List<String> rights;
+    private List<Privilege> privileges;
 
 
     private Date createdAt;
     private String createdBy;
     private Date lastModifiedAt;
     private String lastModifiedBy;
+
+    public Role(){
+        this.createdAt = new Date();
+        this.lastModifiedAt = new Date();
+    }
+
+
 }
